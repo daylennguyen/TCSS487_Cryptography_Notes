@@ -1,4 +1,4 @@
-# ***Cryptography (April 9th 2018)***: Review and Defining a secure cipher
+# Cryptography (April 9th 2018): Review and Defining a secure cipher
 
 ```
 Note: Substitute professor from network security
@@ -7,7 +7,6 @@ Review:
      Perfect Secrecy
      One-Time Padding
 ```
-
 ------
 
 ## **Stream Ciphers**
