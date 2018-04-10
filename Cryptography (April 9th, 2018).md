@@ -1,5 +1,4 @@
-# Cryptography (April 9th 2018): 
-# Review and Defining a secure cipher
+# ***Cryptography (April 9th 2018)***: Review and Defining a secure cipher
 
 ```
 Note: Substitute professor from network security
@@ -8,26 +7,35 @@ Review:
      Perfect Secrecy
      One-Time Padding
 ```
+
+------
+
+[TOC]
+
 ------
 
 ## **Stream Ciphers**
 > A **stream cipher** is a cipher that **takes a short key**
-> sometimes you concatenate those two
-> **Then input:** 
 >
-> >  (K , IV)  -> [ stream cipher ]  -> [    PAD    ]
+> - sometimes you concatenate those two
+
+> **Stream Ciphers take in an input of :** **a key** and an **input vector**  
 >
-> **Then**
+> ​        	` ( K , IV ) --> [ stream cipher ]  --> [    PAD    ]`
 >
-> > The **onetime pad** is **(XOR)'d with the [MESSAGE]**
-> >
-> > and outputs: **[CIPHER TEXT,IV]**
+> ​	**Then,**
 >
-> Which would be given to Bob 
+> ​		The **onetime pad** is **(XOR)'d with the [MESSAGE]**
 >
-> > Bob takes the key and (K , IV) -> [ stream cipher ] -> [	 PAD	 ] 
-> >
-> > Then the one-time pad is (XOR)'d with the  [CIPHER TEXT]
+> ​		and outputs the cipher text: **[ CIPHER TEXT ]**
+>
+> Which would be given to the **receiver: ** long with the Input vector ()
+>
+> ​		The **receiver** takes the **Key** and **Input vector** and runs it through the **stream cipher**:		
+>
+> ​		`( K , IV ) --> [ stream cipher ]  --> [    PAD    ]`
+>
+> ​		Then the one-time pad ( PAD ) is (XOR)'d with the [CIPHER TEXT]
 >
 > - NEEDS TO HAVE A NEW IV WITH EVERY MESSAGE
 
@@ -37,15 +45,13 @@ Review:
 
 > #### Types: DES (BAD) and AES(128)
 >
-> #### 2DES is obsolete because of the meet in the middle attack
+> #### 	2DES is obsolete because of the meet in the middle attack
 >
-> #### 3DES is used instead, 
+> #### 	3DES is used instead, 
 >
-> > - although the security level is 112
-> >
-> >
-> > - the key length 158
-> > - AES is quicker and has a better security level
+> ​		The security level is 112; the key length 158
+>
+> ​		Furthermore, AES is quicker and has a better security level
 
 ## Mode of Operation of a Block Cipher
 
@@ -73,7 +79,7 @@ Review:
 
 - > Takes a counter and 
   >
-  > [ COUNTER ]-> [ AES sub k ] gives a [ pseudo-random output ] 
+  > `[ COUNTER ] -> [ AES sub k ] gives a [ pseudo-random output ]` 
   >
   > which can be ( XOR'd ) with the message
   >
@@ -83,9 +89,7 @@ Review:
 
 ### Claude Shannon defined much of digital logic in his thesis paper
 
-
-
-### Random Variable
+## Random Variable
 
 > A function mapping a sample space (Which is finite) into real numbers.
 >
@@ -110,45 +114,43 @@ Review:
 > > > X = { 0, 1, 2, 3, 4 }
 > > >
 > > > P(x=0) = (1/2) * (1/2) * (1/2) * (1/2) = (1/16)
-> >
-> > What's the **probability of heads equals two?**
-> >
-> > > P(x = 2) = P(HHTT) + P(HTHT) + P(HHTT)
-> >
-> > What about **heads equals one?**
-> >
-> > > P(X = 1) = 4 * ( 1/2 * 1/2 * 1/2 * 1/2  )
-> > >
-> > > ​	       = ( 1/4 )
+>
+> What's the **probability of heads equals two?**
+>
+> ​		`P(x = 2) = P(HHTT) + P(HTHT) + P(HHTT)`
+>
+> What about **heads equals one?**
+>
+> ​		`P(X = 1) = 4 * ( 1/2 * 1/2 * 1/2 * 1/2  ) = ( 1/4 )`
+>
 
-## Random Variables Pt. 2
+## Random Variables Pt. 2, Probability and Syntax
 
-> Prob[X=x] 
+> ###### `Prob[ X = x ]` 
 >
 > denotes the probability of a random var X takin the value x
 >
 > Pr[ x,y ] is the probability that X takes value x and Y takes value y
 >
-> #### Pr[ X=x , Y=y ] :
+> ### Pr[ X = x , Y = y ] :
 >
-> > X*Y = { (HH), (HT), (TH), (TT) }
-> >
-> > Pr[ X=H, Y=H ] = 1/2 * 1/2 = 1/4
+> ​		`X * Y = { (HH), (HT), (TH), (TT) }`
+>
+> ​		`Pr[ X = H, Y = H ] = 1/2 * 1/2 = 1/4`
 >
 > #### K = key space = { 0 , 1 }
 >
-> > P( K = k ) = ( 1 / |K| )
-> >
-> > M = message space = { 0 , 1 }^k
-> >
-> > ​	P( M = m )
+> ​		`P( K = k ) = ( 1 / |K| )`
+>
+> ​		`M = message space = { 0 , 1 }^k`
+>
+> ​		`P( M = m )`
 >
 > #### C = cipher text space --> ( C = c)
 
 ## Final definition of a secure cipher:
 
-A cipher is perfectly secure if for any P(m), any 
-
-**cipher text** C and any message M, we have:
-
-> P( M = m | C = c ) = P( M = m )
+```
+A cipher is perfectly secure if for any P(m), any cipher text C and any message M, we have:
+							P( M = m | C = c ) = P( M = m )
+```
