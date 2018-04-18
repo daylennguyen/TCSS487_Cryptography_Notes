@@ -1,23 +1,29 @@
-# Cryptography (March 30, 2018**)**
+# Cryptography (March 30, 2018)
 
-### **Symmetric cipher:**
+## **Symmetric cipher:**
 
-> ### Definition
->
-> ​	A symmetric cipher is a reversible mathematical transform **E** whose computation depends, in both directions (direct and inverse), of the same secret information, called a ***Key***.
->
-> ​	[ Message ] ==> [ Encryption/Decryption ] <== [ Key ] 
->
-> ​	
->
-> The same key is used for **encryption and decryption**
+### Definition
 
-> ##### Two Families of ciphers:
->
-> - Stream ciphers
->
->
-> - Block ciphers
+A ***symmetric cipher*** is a reversible mathematical transform **E** whose computation depends, in both directions (direct and inverse), of the same secret information, called a ***Key***. 
+
+Where The same key is used for **encryption AND decryption**
+
+##### Encryption:
+
+To start, we input the **message and key** into the **encryption algorithm** 	
+
+> ​		[ *Message* ] ==> [ *Encryption* ] <== [ *Key* ] 
+
+Which will thusly output the **cipher text**
+
+> ​		[ *Encryption*] ==> [ *Cipher text*]
+
+### Stream Ciphers
+
+- Stream ciphers
+
+
+- Block ciphers
 
 ## *Stream Ciphers*
 
