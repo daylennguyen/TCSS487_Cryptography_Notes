@@ -197,7 +197,7 @@ Basic Definition:
 
 #### Feistel Network:
 
-![1524455057595](1524455057595.png)
+![1524455057595](1524455057595.jpg)
 
 #### DES - the F Function:
 
