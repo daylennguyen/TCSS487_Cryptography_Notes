@@ -38,19 +38,19 @@
 
 
 
-## RCF4 :tm:
+## RC4 :tm:
 
-> #### Rivest Cipher #4
->
-> > Proprietary algorithm, never officially revealed.
->
-> > Reverse-engineered from official implementations and published anonymously.
->
-> > Flexible key size (Multiples of 8bits, up to a maximum of 2048 bits)
->
-> > Small number of simple arithmetic operations, oriented towards 8-bit processors.
-> >
-> > **Now deprecated**
+#### Rivest Cipher #4
+
+Proprietary algorithm, never officially revealed.
+
+Reverse-engineered from official implementations and published anonymously.
+
+Flexible key size (Multiples of 8bits, up to a maximum of 2048 bits)
+
+Small number of simple arithmetic operations, oriented towards 8-bit processors.
+
+**Now deprecated**
 
 #### Practical discussion:
 
@@ -80,7 +80,7 @@ A symmetric cipher is a reversible mathematical transform E whose computation de
 
 ## Block cipher
 
->The transform applies to messages of some fixed length n (characteristic of the algorithm).
+The transform applies to messages of some fixed length n (characteristic of the algorithm).
 
 - E: {0,1}^k^ x {0,1}^n^ :arrow_right: {0,1}^n^
 
