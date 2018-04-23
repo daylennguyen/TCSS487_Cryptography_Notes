@@ -76,7 +76,6 @@ Firstly, the text book mentions the [NIST95] definition of security:
 
 - Guarantee that legitimate users will not be unduly prevented from accessing the system's information and resources.
 
-  ​
 
 ### Mechanisms and policies: 
 
@@ -118,7 +117,7 @@ Firstly, the text book mentions the [NIST95] definition of security:
 
 > A reversible mathematical transform ***E*** whose computation depends, in both directions (direct and inverse), of the same secret information, called the key.
 
-![1524451921333](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\sym_cipher)
+![1524451921333](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\sym_cipher.jpg)
 
 There are two families of symmetric ciphers: **Stream Ciphers** and Block Ciphers.
 
@@ -128,7 +127,7 @@ There are two families of symmetric ciphers: **Stream Ciphers** and Block Cipher
 
 > The transform ***E*** applies to messages of any size by operating bitwise.
 
-![1524452741497](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\steamcipher)
+![1524452741497](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\steamcipher.jpg)
 
 - The cipher-text length is the same as the plain-text length
 - Typically the encryption of each bit changes the cipher's internal state to ensure that the output is "random looking"
@@ -172,7 +171,7 @@ Basic Definition:
 
 > The transform applies to messages of some fixed length ***n***, which is a characteristic of the algorithm
 
-​	![1524454616386](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\blockcipher)
+​	![1524454616386](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\blockcipher.jpg)
 
 - The ciphers internal state is not carried from one encryption to the next
   - Block ciphers are stateless
@@ -213,7 +212,7 @@ The algorithm is as follows:
 
 #### Inside the F function (DES)
 
-![1524455273762](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\DES_Ffunction)
+![1524455273762](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\DES_Ffunction.jpg)
 
 #### Obsolescence:
 
@@ -282,7 +281,7 @@ ShiftRows, the second transformation in the AES, F-function
 - Extreme diffusion within each column (MDS Property)
 - Each byte of a column is mapped into a new value that is a function of all four bytes in that col.
 
-![1524458526911](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\mixcol)
+![1524458526911](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\mixcol.jpg)
 
 ![1524458609882](C:\Users\Flan\AppData\Local\Temp\1524458609882.png)
 
@@ -347,4 +346,39 @@ ShiftRows, the second transformation in the AES, F-function
 
 ### ECB: Electronic Code Book, mode of operation
 
-- The simplest mode, in which plain text is handled on block at a time and each block of plaintext is encrypted using the same key.
+- The simplest mode, in which plain text is handled as blocks at a time and each block of plaintext is encrypted using the same key.
+
+  > Partitioning the message into blocks to be encrypted and decrypted independently
+
+- **Problem**: Equal plain text blocks yield equal cipher blocks. (Insecure)
+
+### Cipher Block Chaining: (CBC mode of operation)
+
+- A technique in which the same plaintext block, if repeated, produces different cipher-text blocks.
+- In this scheme: 
+  - the input to the encryption algorithm is the ***(XOR)*** of the current plaintext block and the preceding cipher-text block
+    - The same key is used for each block
+  - **Chaining** together the processing of the sequence of plaintext blocks.
+- Strictly **sequential** mode (no possible **parallelism**)
+
+> Mask a plaintext block with the contexts of the previous cipher-text block (or a random 'Initialization Vector' before encrypting it.)
+
+#### Security Problems:
+
+- The padding introduces a subtle vulnerability (**padding oracle attacks**) that are hard to fix.
+
+![1524462179092](C:\Users\Flan\AppData\Local\Temp\1524462179092.png)
+
+### CTR (counter, mode of operation)
+
+- Highly **Parallelizable**
+- Encrypt a counter and use its buffer cipher-text to emulate a stream cipher
+  - encrypt/decrypt the actual data via (***XOR***)
+  - ![1524462645730](C:\Users\Flan\AppData\Local\Temp\1524462645730.png)
+
+------
+
+### Block Cipher Modes of Operation (TABLE)
+
+![1524461337282](D:\_DRIVE\#CODE\git\TCSS48_Cryptography_Notes\modetable.jpg)
+
